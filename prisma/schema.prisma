@@ -12,9 +12,11 @@ datasource db {
 }
 
 model Bus {
-  id        String @id
-  name      String
-  no        Int    @unique
-  dateStart Float  @default(5)
-  dateEnd   Float  @default(22)
+  id           String @id
+  name         String
+  no           Int    @unique
+  dateStart    Float  @default(5)
+  dateEnd      Float  @default(22)
+  price        Int    @default(7000)
+  studentPrice Int    @default(3000)
 }
