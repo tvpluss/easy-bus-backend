@@ -15,15 +15,17 @@ export class AppService {
     return await this.prismaService.bus.findMany({
       where: {
         name: {
-          search: query.search,
+          ...(query.search && { search: query.search }),
         },
       },
       orderBy: {
-        _relevance: {
-          fields: ['name'],
-          search: query.search,
-          sort: 'desc',
-        },
+        ...(query.search && {
+          _relevance: {
+            fields: ['name'],
+            search: query.search,
+            sort: 'desc',
+          },
+        }),
       },
     });
   }

@@ -1,9 +1,9 @@
 import { Transform, Type } from 'class-transformer';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 export const sanitizeString = (searchPhrase: string) => searchPhrase.trim();
 
 export class GetVarsQuery {
-  @IsNotEmpty()
+  @IsOptional()
   @Type(() => String)
   @Transform(({ value }) =>
     typeof value === 'string'
