@@ -37,4 +37,28 @@ export class AppController {
   ) {
     return this.appService.getStopsByVars(id, varId);
   }
+
+  @Get('/autocomplete')
+  getStopsForAutocomplete() {
+    return this.appService.getStopsForAutocomplete();
+  }
+
+  @Get('/inbound/:tla/:tlo/:bla/:blo')
+  getStopsInbound(
+    @Param('tla') tla: string,
+    @Param('tlo') tlo: string,
+    @Param('bla') bla: string,
+    @Param('blo') blo: string,
+  ) {
+    console.log(tla, tlo, bla, blo);
+    return this.appService.getStopsInBound(tla, tlo, bla, blo);
+  }
+
+  @Get('/pathfinding/:startStop/:endStop')
+  pathfinding(
+    @Param('startStop') start: string,
+    @Param('endStop') end: string,
+  ) {
+    return this.appService.pathfinding(start, end);
+  }
 }
