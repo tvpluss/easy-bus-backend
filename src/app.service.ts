@@ -14,15 +14,24 @@ export class AppService {
   async getVars(query: GetVarsQuery) {
     return await this.prismaService.bus.findMany({
       where: {
-        name: {
-          ...(query.search && { search: query.search }),
-        },
+        OR: [
+          {
+            name: {
+              ...(query.search && { search: query.search }),
+            },
+          },
+          {
+            no: {
+              ...(query.search && { search: query.search }),
+            },
+          },
+        ],
       },
       orderBy: {
         ...(query.search
           ? {
               _relevance: {
-                fields: ['name'],
+                fields: ['no', 'name'],
                 search: query.search,
                 sort: 'desc',
               },

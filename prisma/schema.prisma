@@ -14,7 +14,7 @@ datasource db {
 model Bus {
   id           String @id
   name         String
-  no           Int    @unique
+  no           String @unique
   dateStart    Float  @default(5)
   dateEnd      Float  @default(22)
   price        Int    @default(7000)
