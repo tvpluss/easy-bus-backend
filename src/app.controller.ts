@@ -61,4 +61,11 @@ export class AppController {
   ) {
     return this.appService.pathfinding(start, end);
   }
+  @Get('/pathfinding/byPos/:startPos/:endPos')
+  pathfindingByPos(
+    @Param('startPos') start: string,
+    @Param('endPos') end: string,
+  ) {
+    return this.appService.pathfindingByPos(start, end);
+  }
 }

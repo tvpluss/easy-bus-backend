@@ -11,6 +11,13 @@ export class AppService {
     private readonly prismaService: PrismaService,
   ) {}
 
+  async pathfindingByPos(start: string, end: string) {
+    return this.httpService
+      .get(
+        `https://cdn.buytbuyt.com/cms/pathfinding/getpathbystop/${start}/${end}/2`,
+      )
+      .pipe(map((res) => res.data));
+  }
   async getVars(query: GetVarsQuery) {
     return await this.prismaService.bus.findMany({
       where: {
