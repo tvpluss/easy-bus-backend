@@ -7,12 +7,10 @@ async function bootstrap() {
   console.log(process.env.PORT);
 
   const config = new DocumentBuilder()
-    .setTitle('Bookera Backend')
-    .setDescription(
-      'APIs documentation for backend of bookera, a social book-reading platform',
-    )
+    .setTitle('EasyBus Backend')
+    .setDescription('APIs documentation for backend of EasyBus')
     .setVersion('1.0')
-    .addTag('bookera')
+    .addTag('easybus')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
